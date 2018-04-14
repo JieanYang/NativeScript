@@ -1,0 +1,47 @@
+<ActionBar title="Home" class="action-bar">
+</ActionBar>
+<RadSideDrawer #drawerComponent tkToggleNavButton showOverNavigation="true">
+	<ScrollView tkDrawerContent class="sidedrawer-left">
+		<StackLayout horizontalAlign="left">
+			<drawer-content></drawer-content>
+		</StackLayout>
+	</ScrollView>
+	<ScrollView orientation="vertical" tkMainContent class="page">
+		<GridLayout class="m-5" rows="auto auto auto">
+			<StackLayout row="0">
+				<StackLayout class="p-10 border" *ngIf="dish">
+					<Image [src]="BaseURL + dish.image"></Image>
+					<StackLayout>
+						<label class="h2" [text]="dish.name"></label>
+						<label class="body" [text]="dish.description" textWrap="true"></label>
+					</StackLayout>
+				</StackLayout>
+				<ActivityIndicator busy="ture" *ngIf="!(dish || dishErrMess)" width="50" height="50" class="activity-indicator"></ActivityIndicator>
+				<label *ngIf="dishErrMess" [text]="'Error: ' + dishErrMess"></label>
+			</StackLayout>
+			<StackLayout row="1">
+				<StackLayout class="p-10 border" *ngIf="promotion">
+					<Image [src]="BaseURL + promotion.image"></Image>
+					<StackLayout>
+						<label class="h2" [text]="promotion.name"></label>
+						<label class="body" [text]="promotion.description" textWrap="true"></label>
+					</StackLayout>
+				</StackLayout>
+				<ActivityIndicator busy="ture" *ngIf="!(promotion || promoErrMess)" width="50" height="50" class="activity-indicator"></ActivityIndicator>
+				<label *ngIf="promoErrMess" [text]="'Error: ' + promoErrMess"></label>
+			</StackLayout>
+			<StackLayout row="2">
+				<StackLayout class="p-10 border" *ngIf="leader">
+					<Image [src]="BaseURL + leader.image"></Image>
+					<StackLayout>
+						<label class="h2" [text]="leader.name"></label>
+						<label class="h3" [text]="leader.designation"></label>
+						<label class="body" [text]="leader.description" textWrap="true"></label>
+					</StackLayout>
+				</StackLayout>
+				<ActivityIndicator busy="ture" *ngIf="!(leader || leaderErrMess)" width="50" height="50" class="activity-indicator"></ActivityIndicator>
+				<label *ngIf="leaderErrMess" [text]="'Error: ' + leaderErrMess"></label>
+			</StackLayout>
+		</GridLayout>
+	</ScrollView>
+</RadSideDrawer>
