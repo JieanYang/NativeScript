@@ -51,3 +51,9 @@ refer to http://docs.nativescript.org/ui/theme.
     color: black;
     border-width: 0;
 }
+
+
+/* font-awesome */
+.fa {
+    font-family: FontAwesome, fontawesome-webfont;
+}
