@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FavoriteService } from '../services/favorite.service';
 import { Dish } from '../shared/dish';
+// RadListView -> I think it's a tag in the html file
 import { ListViewEventData, RadListView } from 'nativescript-telerik-ui/listview';
 import { RadListViewComponent } from 'nativescript-telerik-ui/listview/angular';
+// RadListViewComponent must work with the type of data ObservableArray here
 import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { DrawerPage } from '../shared/drawer/drawer.page';
 

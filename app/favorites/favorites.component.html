@@ -15,6 +15,9 @@
             <ListViewLinearLayout tkListViewLayout scrollDirection="vertical"
                 itemInsertAnimation="Default" itemDeleteAnimation="Default">
             </ListViewLinearLayout>
+            <!-- The template blow will load automatically in the tag ListViewLinearLayout 
+            cause its attribute tkListViewLayout -->
+            <!-- And for templates, they have attributes to indicate which role they are -->
             <ng-template tkListItemTemplate let-item="item">
                 <StackLayout orientation="horizontal" class="listItemStackLayout">
                     <Image row="0" col="0" rowSpan="2" height="60" width="60"
