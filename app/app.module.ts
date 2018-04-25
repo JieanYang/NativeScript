@@ -15,6 +15,9 @@ import { DrawerComponent } from "./shared/drawer/drawer.component";
 import { HomeComponent } from "./home/home.component";
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
+// modal comment
+import { commentModalComponent } from './comment/comment.component';
+
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { FavoritesComponent } from './favorites/favorites.component';
@@ -56,10 +59,12 @@ import { baseURL } from './shared/baseurl';
         AboutComponent,
         FavoritesComponent,
         ReservationComponent,
-        ReservationModalComponent
+        ReservationModalComponent,
+        commentModalComponent
     ],
     entryComponents: [
-    ReservationModalComponent
+        ReservationModalComponent,
+        commentModalComponent
     ],
     providers: [
         {provide: 'BaseURL', useValue: baseURL},

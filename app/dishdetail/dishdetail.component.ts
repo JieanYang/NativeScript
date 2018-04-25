@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comment';
 import { DishService } from '../services/dish.service';
@@ -9,6 +9,10 @@ import { FavoriteService } from '../services/favorite.service';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 // Dialogs
 import { Toasty } from 'nativescript-toasty';
+import { action } from 'ui/dialogs';
+//Service for opening the modal comment
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
+import { commentModalComponent } from'../comment/comment.component';
 
 @Component({
 	selector: 'app-dishdetail',
@@ -32,7 +36,10 @@ export class DishdetailComponent implements OnInit {
 		private routerExtensions: RouterExtensions,
 		private favoriteservice: FavoriteService,
 		private fonticon: TNSFontIconService,
-		@Inject('BaseURL') private BaseURL) {}
+		@Inject('BaseURL') private BaseURL,
+		//Service for opening the modal comment
+		private modalService: ModalDialogService,
+		private vcRef: ViewContainerRef) {}
 
 	ngOnInit() {
 		this.route.params
@@ -61,4 +68,30 @@ export class DishdetailComponent implements OnInit {
 			toast.show();
 		}
 	}
+
+	openActionDialog() {
+		let options = {
+			title: "Actions",
+			message: "Choose one action",
+			cancelButtonText: "Cancel",
+			actions: ["Add to Favorites", "Add Comment"]
+		};
+
+		action(options).then((result) => {
+			if(result === "Add to Favorites"){
+				this.addToFavorites();
+			} else if(result === "Add Comment") {
+				let options: ModalDialogOptions ={
+					viewContainerRef: this.vcRef,
+					context: null,
+					fullscreen: false
+				};
+				this.modalService.showModal(commentModalComponent, options)
+					.then((result: Comment) => {
+						this.dish.comments.push(result);
+					});
+			}
+		});
+	}
+
 }
