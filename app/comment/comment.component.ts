@@ -31,35 +31,36 @@ export class commentModalComponent implements OnInit {
 
 	}
 
-	onAuthorChange(args) {
-		let textField = <TextField>args.object;
-		this.commentForm.patchValue({ author: textField.text });
-	}
+    onRatingChange(args) {
+        let slider = <Slider>args.object;
+        this.commentForm.patchValue({ rating: slider.value });
+    }
 
-	onRatingChange(args) {
-		let slider = <Slider>args.object;
-		this.commentForm.patchValue({ rating: slider.value });
-	}
 
-	onCommentTextFieldChange(args) {
-		let textField = <TextField>args.object;
-		this.commentForm.patchValue({ comment: textField.text });
-	}
-
-	onSubmit() {
-		/* Old way
-        var comment = {
-			rating: this.commentForm.get('rating').value,
-			comment: this.commentForm.controls['comment'].value,
-			author: this.commentForm.controls['author'].value,
-			date: new Date().toISOString()
-		}
-		this.params.closeCallback(comment);*/
-
+    onSubmit() {
         let submitComment : Comment;
         submitComment = this.commentForm.value;
         submitComment.date = new Date().toISOString();
         this.params.closeCallback(submitComment);
+
+        /* Old way
+        var comment = {
+            rating: this.commentForm.get('rating').value,
+            comment: this.commentForm.controls['comment'].value,
+            author: this.commentForm.controls['author'].value,
+            date: new Date().toISOString()
+        }
+        this.params.closeCallback(comment);*/
 	}
+
+    /* It has two way binding, we don't need this two functions
+    onAuthorChange(args) {
+        let textField = <TextField>args.object;
+        this.commentForm.patchValue({ author: textField.text });
+    }
+    onCommentTextFieldChange(args) {
+        let textField = <TextField>args.object;
+        this.commentForm.patchValue({ comment: textField.text });
+    }*/
 
 }
