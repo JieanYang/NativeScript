@@ -69,6 +69,23 @@ export class DishdetailComponent implements OnInit {
 		}
 	}
 
+  createModalView() {
+    let options: ModalDialogOptions ={
+      viewContainerRef: this.vcRef,
+      context: null,
+      fullscreen: false
+    };
+
+    this.modalService.showModal(commentModalComponent, options)
+      .then((result: Comment) => {
+        this.dish.comments.push(result);
+        this.numcomments = this.dish.comments.length;
+        let total = 0;
+        this.dish.comments.forEach(comment => total += comment.rating);
+        this.avgstars = (total/this.numcomments).toFixed(2);
+      });
+  }
+
 	openActionDialog() {
 		let options = {
 			title: "Actions",
@@ -81,15 +98,7 @@ export class DishdetailComponent implements OnInit {
 			if(result === "Add to Favorites"){
 				this.addToFavorites();
 			} else if(result === "Add Comment") {
-				let options: ModalDialogOptions ={
-					viewContainerRef: this.vcRef,
-					context: null,
-					fullscreen: false
-				};
-				this.modalService.showModal(commentModalComponent, options)
-					.then((result: Comment) => {
-						this.dish.comments.push(result);
-					});
+				this.createModalView();
 			}
 		});
 	}

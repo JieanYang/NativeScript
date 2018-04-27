@@ -47,14 +47,19 @@ export class commentModalComponent implements OnInit {
 	}
 
 	onSubmit() {
-		var comment = {
+		/* Old way
+        var comment = {
 			rating: this.commentForm.get('rating').value,
 			comment: this.commentForm.controls['comment'].value,
 			author: this.commentForm.controls['author'].value,
 			date: new Date().toISOString()
 		}
+		this.params.closeCallback(comment);*/
 
-		this.params.closeCallback(comment);
+        let submitComment : Comment;
+        submitComment = this.commentForm.value;
+        submitComment.date = new Date().toISOString();
+        this.params.closeCallback(submitComment);
 	}
 
 }
