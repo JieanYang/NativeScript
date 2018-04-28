@@ -33,13 +33,13 @@ export class HomeComponent extends DrawerPage implements OnInit {
 	}
 
 	ngOnInit() {
-		this.dishservice.getFeatureDish()
+		this.dishservice.getFeaturedDish()
 						.subscribe(dish => this.dish = dish,
 							errmess => this.dishErrMess = <any>errmess);
-		this.promotionservice.getFeaturePromotion()
+		this.promotionservice.getFeaturedPromotion()
 						.subscribe(promotion => this.promotion = promotion,
 							errmess => this.promoErrMess = <any>errmess);
-		this.leaderservice.getFeatureLeader()
+		this.leaderservice.getFeaturedLeader()
 						.subscribe(leader => this.leader = leader,
 							errmess => this.leaderErrMess = <any>errmess);
 

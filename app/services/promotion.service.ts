@@ -31,7 +31,7 @@ export class PromotionService {
 						.catch(error => { return this.processHTTPMsgService.handleError(error); })
 	}
 
-	getFeaturePromotion(): Observable<Promotion> {
+	getFeaturedPromotion(): Observable<Promotion> {
 		return this.http.get(baseURL + 'promotions?featured=true')
 						.map(res => { return this.processHTTPMsgService.extractData(res)[0]; })
 						.catch(error => { return this.processHTTPMsgService.handleError(error); })

@@ -31,7 +31,7 @@ export class LeaderService {
 						.catch(error => { return this.processHTTPMsgService.handleError(error); })
 	}
 
-	getFeatureLeader(): Observable<Leader> {
+	getFeaturedLeader(): Observable<Leader> {
 		return this.http.get(baseURL + 'leaders?featured=true')
 						.map(res => { return this.processHTTPMsgService.extractData(res)[0]; })
 						.catch(error => { return this.processHTTPMsgService.handleError(error); })
