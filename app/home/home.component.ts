@@ -9,7 +9,7 @@ import { LeaderService } from '../services/leader.service';
 
 import { DrawerPage } from '../shared/drawer/drawer.page';
 
-//Animation and Gesture
+//Animations and Gestures
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { Page } from 'ui/page';
 import { View } from 'ui/core/view';
