@@ -5,6 +5,8 @@ import { getString, setString } from 'application-settings';
 import { RouterExtensions } from 'nativescript-angular/router';
 import * as camera from 'nativescript-camera';
 import { Image } from 'ui/image';
+//Image picker, needs package nativescript-permissions for Android 6+ (API 23+)
+import * as imagepicker from 'nativescript-imagepicker';
 
 
 @Component({
@@ -38,6 +40,23 @@ export class UserAuthComponent implements OnInit {
 
 	ngOnInit() {
 
+	}
+
+	getFromLibrary() {
+		let context = imagepicker.create({
+			mode: "single"
+		});
+
+		context.authorize()
+			.then(() => {
+				return context.present();
+			})
+			.then((selectedimg) => {
+				// console.log(JSON.stringify(selectedimg));
+				let image = <Image>this.page.getViewById<Image>('myPicture');
+				image.src = selectedimg[0];
+			})
+			.catch((err)=> console.log(err.message));
 	}
 
 	takePicture() {

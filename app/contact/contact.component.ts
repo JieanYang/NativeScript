@@ -4,6 +4,8 @@ import { DrawerPage } from '../shared/drawer/drawer.page';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 //SendEmail
 import * as Email from 'nativescript-email';
+//Phone call
+import * as Phone from 'nativescript-phone';
 
 
 @Component({
@@ -35,6 +37,23 @@ export class ContactComponent extends DrawerPage implements OnInit {
 					console.log("No Email Configured");
 				}
 			})
+	}
+
+	callRestaurant() {
+		Phone.dial('852 1234 5678', true);
+		/*Don't support Andoid 6.0 with false
+		Phone.dial('852 1234 5678', false);*/
+
+		/*Phone.sms(["852 1234 5678"],"My Message")
+		.then(function(args){
+		        /// args.reponse: "success", "cancelled", "failed"
+		        console.log(JSON.stringify(args));
+		    },
+		    function(err){
+		        console.log("Error: " + err);
+		    }
+		);*/
+
 	}
 
 }
