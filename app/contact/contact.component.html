@@ -8,7 +8,8 @@
 			<drawer-content></drawer-content>
 		</StackLayout>
 	</ScrollView>
-	<StackLayout tkMainContent class="page">
+	<ScrollView tkMainContent class="page">
+		<GridLayout>
 			<StackLayout class="p-10 m-5 border">
 				<label class="h2" text="Contact Information"></label>
 				<label class="body" text="121, Clear Water Bay Road"></label>
@@ -17,6 +18,11 @@
 				<label class="body" text="Tel: +852 1234 5678"></label>
 				<label class="body" text="Fax: +852 8765 4321"></label>
 				<label class="body" text="Email:confusion@food.net"></label>
+				<GridLayout orientation="horizontal" rows="*" columns="*, *" class="m-t-20">
+					<Button row="0" col="0" [text]="('fa-phone' | fonticon) + ' Call'" class="btn btn-rounded-sm btn-outline no-border fa"></Button>
+					<Button row="0" col="1" [text]="('fa-envelope-o' | fonticon) + ' Email'" class="btn btn-rounded-sm btn-outline no-border fa" (tap)="sendEmail()"></Button>
+				</GridLayout>
 			</StackLayout>
-	</StackLayout>
+		</GridLayout>
+	</ScrollView>
 </RadSideDrawer>
