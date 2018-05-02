@@ -3,7 +3,7 @@ import { Comment } from "./comment";
 export interface Dish {
 	id: number;
 	name: string;
-	imgae: string;
+	image: string;
 	category: string;
 	label: string;
 	price: string;
